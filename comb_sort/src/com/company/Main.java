@@ -51,10 +51,10 @@ public class Main {
 
     public static void sort(int[] array) {
         boolean moved = true;
-        int step = array.length - 1;
-        while (moved) {
+        int step = array.length;
+        while (moved || step > 1) {
             moved = false;
-            for (int i = 0; i < array.length && step > 1; i++) {
+            for (int i = 0; i + step < array.length; i++) {
                 if (array[i] > array[i + step]) {
                     int temp = array[i];
                     array[i] = array[i + step];
@@ -67,6 +67,20 @@ public class Main {
     }
 
     public static void sortStr(String[] arrayStr) {
+        boolean moved = true;
+        int step = arrayStr.length;
+        while (moved || step > 1) {
+            moved = false;
+            for (int i = 0; i + step < arrayStr.length; i++) {
+                if (arrayStr[i].compareTo(arrayStr[i + step]) > 0) {
+                    String temp = arrayStr[i];
+                    arrayStr[i] = arrayStr[i + step];
+                    arrayStr[i + step] = temp;
+                    moved = true;
+                }
+            }
+            step = (int) (step / 1.2473309);
+        }
     }
 
     public static void printArray(int[] arr) {
