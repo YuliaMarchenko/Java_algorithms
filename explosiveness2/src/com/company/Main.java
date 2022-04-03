@@ -36,9 +36,8 @@ public class Main {
         if (length == 1) return 3;
         int[] safeOptions = new int[length];
         safeOptions[0] = 3;
-        safeOptions[1] = 8;
-        int x = 2;
-        for (int i = 2; i < length; i++) {
+        int x = 1;
+        for (int i = 1; i < length; i++) {
             safeOptions[i] = (safeOptions[i - 1] - x) * 3 + x * 2;
             x = safeOptions[i - 1] - x;
         }
