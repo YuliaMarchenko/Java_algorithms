@@ -18,6 +18,7 @@ public class Main {
         System.out.println("Enter length ");
         int length = sc.nextInt();
         System.out.println(numberSafeOptions(length));
+        System.out.println(numberSafeOptions2(length));
     }
 
     public static int numberSafeOptions(int length) {
@@ -27,6 +28,19 @@ public class Main {
         safeOptions[1] = 8;
         for (int i = 2; i < length; i++) {
             safeOptions[i] = 2 * (safeOptions[i - 1] + safeOptions[i - 2]);
+        }
+        return safeOptions[length - 1];
+    }
+
+    public static int numberSafeOptions2(int length) {
+        if (length == 1) return 3;
+        int[] safeOptions = new int[length];
+        safeOptions[0] = 3;
+        safeOptions[1] = 8;
+        int x = 2;
+        for (int i = 2; i < length; i++) {
+            safeOptions[i] = (safeOptions[i - 1] - x) * 3 + x * 2;
+            x = safeOptions[i - 1] - x;
         }
         return safeOptions[length - 1];
     }
